@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useGameStore } from './store/gameStore';
 import { StartScreen } from './components/screens/StartScreen';
 import { GameScreen } from './components/screens/GameScreen';
@@ -9,13 +9,37 @@ import { setupAdminShortcuts, exportGameResults } from './utils/exportData';
 import { clearGameResults, getStorageStats } from './utils/storage';
 import { initAudio, toggleMute } from './utils/audioController';
 
+// Breakpoint comun pentru mobil (Tailwind md: este 768px)
+const MOBILE_BREAKPOINT = 768; 
+
 function App() {
   const gameStatus = useGameStore((state) => state.gameStatus);
+  // NOU: Starea pentru a urmări dacă suntem pe mobil
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Funcție useCallback pentru a verifica lățimea ecranului
+  const checkIsMobile = useCallback(() => {
+    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+  }, []);
 
   // Initialize audio system on app mount
   useEffect(() => {
     initAudio();
   }, []);
+
+  // NOU: Efect pentru a verifica și a urmări redimensionarea ecranului
+  useEffect(() => {
+    // Verifică imediat la montare
+    checkIsMobile(); 
+    
+    // Adaugă listener pentru redimensionare
+    window.addEventListener('resize', checkIsMobile);
+    
+    // Cleanup: Elimină listener-ul la demontare
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+    };
+  }, [checkIsMobile]); // Rulează o singură dată la montare
 
   // Setup admin keyboard shortcuts
   useEffect(() => {
@@ -69,11 +93,17 @@ function App() {
     }
   };
 
+  // NOU: Alege imaginea de fundal bazată pe starea isMobile
+  const backgroundImageUrl = isMobile 
+    ? 'url(/assets/images/background2.png)' 
+    : 'url(/assets/images/background1.png)';
+
   return (
     <div
       className="min-h-screen bg-no-repeat"
       style={{
-        backgroundImage: 'url(/assets/images/background1.png)',
+        // MODIFICARE: Folosește imaginea dinamică
+        backgroundImage: backgroundImageUrl,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundColor: '#0e0513', // Fallback color

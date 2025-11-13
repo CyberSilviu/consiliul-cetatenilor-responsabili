@@ -12,6 +12,7 @@ import { categories, challenges, PHONE_CALL_1_TIME, PHONE_CALL_2_TIME, WIN_THRES
 import { canSelectChallenge, checkWinConditions } from '../../utils/gameLogic';
 import { playBackgroundMusic, stopBackgroundMusic, speedUpBackgroundMusic, resetBackgroundMusicSpeed, playSFX } from '../../utils/audioController';
 import type { Category, Challenge } from '../../data/types';
+import ScrollToTopButton from '../ui/ScrollToTopButton'; // Asigură-te că acest fișier există!
 
 // Fisher-Yates shuffle algorithm
 const shuffleArray = <T,>(array: T[]): T[] => {
@@ -135,22 +136,42 @@ export const GameScreen = () => {
   const canFinish = checkWinConditions(budget, categoryPercentages);
 
   return (
-    <div className="h-screen flex overflow-hidden">
-      {/* Logo - fixed to screen top-right */}
-      <div className="absolute top-6 left-6 z-8">
+    // Container Principal: flex-col pe mobil, flex-row pe desktop. 
+    // Scroll permis pe mobil, fixat pe desktop (scroll-ul va fi pe componentele interne).
+    <div className="min-h-screen flex flex-col lg:h-screen lg:flex-row lg:overflow-hidden overflow-auto">
+      
+      {/* Logo - Poziționare Responsivă */}
+      <div 
+        className="
+          w-full text-center mt-6 mb-6 
+          lg:absolute lg:top-6 lg:left-6 lg:z-8 lg:w-auto 
+        "
+      >
         <img
           src="/assets/images/logo.svg"
           alt="Logo"
-          className="h-40 w-auto"
+          className="
+            h-40 w-auto mx-auto 
+            lg:h-60 lg:mx-0
+          "
         />
       </div>
+
       {/* Left Sidebar: Categories, Budget, Timer, Controls */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
-        className="flex-none w-[420px] bg-slate-900/98 backdrop-blur-lg border-r-2 border-purple-500/30 p-6 flex flex-col"
+        // Sidebar: w-full pe mobil, lățime fixă pe desktop. Border jos pe mobil, border dreapta pe desktop.
+        className="
+            flex-none 
+            w-full lg:w-[420px] 
+            bg-slate-900/98 backdrop-blur-lg 
+            border-b-2 lg:border-r-2 border-purple-500/30 
+            p-6 flex flex-col
+        "
       >
-        <div className="flex-1 space-y-6 overflow-y-auto">
+        {/* Scroll pe y doar pentru sidebar pe desktop (dacă conținutul e prea lung) */}
+        <div className="flex-1 space-y-6 lg:overflow-y-auto"> 
           {/* Categories */}
           <div className="space-y-4">
             {categories.map((category: Category) => (
@@ -216,9 +237,11 @@ export const GameScreen = () => {
         </div>
       </motion.div>
 
-      {/* Right Content Area: Challenges Grid - Scrollable */}
-      <div className="flex-1 overflow-y-auto p-6">
-        <div className="grid grid-cols-2 gap-4 h-fit">
+      {/* Right Content Area: Challenges Grid (Devine sub sidebar pe mobil) */}
+      {/* Scroll permis pe y doar pentru acest container pe desktop */}
+      <div className="flex-1 p-6 lg:overflow-y-auto"> 
+        {/* Grid: 1 coloană pe mobil, 2 coloane pe desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 h-fit">
           {shuffledChallenges.map((challenge: Challenge) => {
             const isSelected = selectedChallenges.includes(challenge.id);
             const isDisabled =
@@ -245,7 +268,7 @@ export const GameScreen = () => {
         </div>
       </div>
 
-      {/* Phone Call Popup */}
+      {/* Popups */}
       <PhoneCallPopup
         isOpen={showPhoneCallPopup}
         onAnswer={handlePhoneCallAnswer}
@@ -253,7 +276,6 @@ export const GameScreen = () => {
         callNumber={currentPhoneCall}
       />
 
-      {/* Finish Blocked Modal */}
       <FinishBlockedModal
         isOpen={showFinishBlockedModal}
         onClose={() => setShowFinishBlockedModal(false)}
@@ -262,6 +284,9 @@ export const GameScreen = () => {
         categories={categories}
         minThreshold={WIN_THRESHOLD}
       />
+
+      {/* Buton Scroll to Top (Vizibil doar când se derulează) */}
+      <ScrollToTopButton /> 
     </div>
   );
 };

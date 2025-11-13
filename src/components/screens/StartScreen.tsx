@@ -45,14 +45,22 @@ export const StartScreen = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden">
-      {/* Logo - fixed to screen top-right */}
-      <div className="absolute top-6 left-6 z-20">
-        <img
-          src="/assets/images/logo.svg"
-          alt="Logo"
-          className="h-40 w-auto"
-        />
-      </div>
+      {/* Logo - Responsive Positioning */}
+      <div 
+        className="
+          w-full text-center mb-6 
+          lg:absolute lg:top-6 lg:left-6 lg:z-20 lg:w-auto 
+        "
+      >
+        <img
+          src="/assets/images/logo.svg"
+          alt="Logo"
+          className="
+            h-60 w-auto mx-auto /* Mobil: Redimensionat și centrat */
+            lg:h-60 lg:mx-0 /* Desktop: Revenire la înălțime mare, fără margine automată */
+          "
+        />
+      </div>
 
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

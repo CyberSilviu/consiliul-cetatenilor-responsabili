@@ -108,3 +108,35 @@ button, .clickable {
   min-width: 44px;
   touch-action: manipulation;
 }
+
+
+/* --- ADAPTARE PENTRU ECRANE MOBILE (Max-Width 768px) --- */
+@media (max-width: 768px) {
+    
+    /* 1. Scalarea Fonturilor (Esential) */
+    :root {
+        --font-h1: 32px/1.1 Poppins; 
+        --font-h2: 26px/1.15 Poppins; 
+        --font-h3: 20px/1.2 Poppins;
+        --font-body-lg: 18px/1.35 Poppins;
+        --font-body: 16px/1.4 Poppins; 
+        --font-ui: 14px/1.4 Poppins; 
+        --font-small: 12px/1.4 Poppins; 
+
+        --logo-clearspace-digital: 10px;
+    }
+    
+    /* 2. Permiteți scroll-ul pe verticală (Dacă este necesar) */
+    /* Dacă aplicația este un joc imersiv full-screen, puteți sări peste acest pas. */
+    
+    #root {
+        position: relative; 
+        height: auto;
+        overflow: auto;
+    }
+    
+    body {
+        overflow: auto;
+    }
+    
+}
