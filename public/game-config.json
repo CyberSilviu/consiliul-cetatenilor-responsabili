@@ -1,0 +1,267 @@
+{
+  "$schema": "./game-config.schema.json",
+  "version": "1.0.0",
+  "gameParams": {
+    "timerSeconds": 120,
+    "totalBudget": 500000,
+    "minCategoryThreshold": 50,
+    "lateAudioSpeedupStart": 10,
+    "enableDataCapture": true,
+    "inspectorateEvent": {
+      "firstAt": 90,
+      "secondAt": 45,
+      "penaltyFirst": 10,
+      "penaltySecond": 15
+    }
+  },
+  "categories": [
+    {
+      "id": "inovare",
+      "label": "Inovare",
+      "colorBands": {
+        "red": [0, 29],
+        "orange": [30, 49],
+        "green": [50, 100]
+      }
+    },
+    {
+      "id": "egalitate",
+      "label": "Egalitate de Șanse",
+      "colorBands": {
+        "red": [0, 29],
+        "orange": [30, 49],
+        "green": [50, 100]
+      }
+    },
+    {
+      "id": "antreprenoriat",
+      "label": "Antreprenoriat",
+      "colorBands": {
+        "red": [0, 29],
+        "orange": [30, 49],
+        "green": [50, 100]
+      }
+    }
+  ],
+  "challenges": [
+    {
+      "id": "1",
+      "title": "Renovarea laboratorului de chimie",
+      "shortDesc": "Echipamente moderne și siguranță îmbunătățită",
+      "cost": 80000,
+      "effects": {
+        "inovare": 25
+      },
+      "iconKey": "flask"
+    },
+    {
+      "id": "2",
+      "title": "Burse pentru elevi defavorizați",
+      "shortDesc": "Suport financiar pentru 50 de elevi",
+      "cost": 60000,
+      "effects": {
+        "egalitate": 30
+      },
+      "iconKey": "hand-heart"
+    },
+    {
+      "id": "3",
+      "title": "Program de mentorat în IT",
+      "shortDesc": "Parteneriat cu companii tech locale",
+      "cost": 70000,
+      "effects": {
+        "antreprenoriat": 35
+      },
+      "iconKey": "laptop"
+    },
+    {
+      "id": "4",
+      "title": "Platformă digitală de învățare",
+      "shortDesc": "Acces la resurse online pentru toți elevii",
+      "cost": 90000,
+      "effects": {
+        "inovare": 30
+      },
+      "iconKey": "monitor"
+    },
+    {
+      "id": "5",
+      "title": "Transport gratuit pentru elevi",
+      "shortDesc": "Acces la educație din zonele rurale",
+      "cost": 50000,
+      "effects": {
+        "egalitate": 25
+      },
+      "iconKey": "bus"
+    },
+    {
+      "id": "6",
+      "title": "Incubator de startup-uri școlare",
+      "shortDesc": "Dezvoltare idei de afaceri pentru elevi",
+      "cost": 80000,
+      "effects": {
+        "antreprenoriat": 30
+      },
+      "iconKey": "lightbulb"
+    },
+    {
+      "id": "7",
+      "title": "Renovare bibliotecă",
+      "shortDesc": "Modernizare spațiu și cărți noi",
+      "cost": 40000,
+      "effects": {
+        "inovare": 20
+      },
+      "iconKey": "book"
+    },
+    {
+      "id": "8",
+      "title": "Uniforme școlare gratuite",
+      "shortDesc": "Pentru elevi în situații vulnerabile",
+      "cost": 30000,
+      "effects": {
+        "egalitate": 20
+      },
+      "iconKey": "shirt"
+    },
+    {
+      "id": "9",
+      "title": "Club de robotică",
+      "shortDesc": "Echipamente LEGO și Arduino",
+      "cost": 60000,
+      "effects": {
+        "antreprenoriat": 25
+      },
+      "iconKey": "cpu"
+    },
+    {
+      "id": "10",
+      "title": "Tablete pentru profesori",
+      "shortDesc": "Dispozitive pentru digitalizare",
+      "cost": 50000,
+      "effects": {
+        "inovare": 25
+      },
+      "iconKey": "tablet"
+    },
+    {
+      "id": "11",
+      "title": "Consiliere psihologică",
+      "shortDesc": "Psiholog școlar full-time",
+      "cost": 40000,
+      "effects": {
+        "egalitate": 25
+      },
+      "iconKey": "heart"
+    },
+    {
+      "id": "12",
+      "title": "Competiții de business",
+      "shortDesc": "Participare la evenimente naționale",
+      "cost": 30000,
+      "effects": {
+        "antreprenoriat": 20
+      },
+      "iconKey": "trophy"
+    }
+  ],
+  "domains": [
+    "Director",
+    "Profesor",
+    "Inspector",
+    "Business",
+    "ONG",
+    "Presă",
+    "Primar",
+    "Consilier Local",
+    "Altul"
+  ],
+  "strings": {
+    "ro": {
+      "start": {
+        "title": "Simulare",
+        "subtitle": "Primarii Anului 2025",
+        "description": "Experimentează provocările unui director de școală",
+        "nameLabel": "Nume Complet",
+        "namePlaceholder": "ex: Maria Popescu",
+        "domainLabel": "Domeniu",
+        "domainPlaceholder": "Selectează domeniul",
+        "instructionsBtn": "Instrucțiuni",
+        "startBtn": "Start joc",
+        "tagline": "Privim viitorul educației în ochi"
+      },
+      "instructions": {
+        "title": "Vezi cum e să fii primar pentru 2 minute",
+        "subtitle": "Ai 2 minute și un buget limitat. Fiecare alegere contează!",
+        "step1Title": "Cheltuie bugetul",
+        "step1Desc": "Alocă toate resursele către provocări",
+        "step2Title": "Crește procentele",
+        "step2Desc": "Urmărește cum cresc categoriile",
+        "step3Title": "Atinge 50%",
+        "step3Desc": "Toate categoriile trebuie la minim 50%",
+        "objective": "Cheltuiește exact tot bugetul și atinge minimum 50% satisfacere în toate cele 3 categorii (Inovare, Egalitate de Șanse, Antreprenoriat). Poți finaliza jocul doar când apeși pe FINISH. Butonul devine activ când ai cheltuit tot bugetul (0 rămas) și toate categoriile au peste 50%.",
+        "warning": "Pe parcursul jocului, şefuul de partid te poate suna! Dacă răspunzi, pierzi timp prețios. Dacă nu răspunzi prima dată, vor suna din nou...",
+        "closeBtn": "Am înțeles!"
+      },
+      "game": {
+        "budget": "Buget",
+        "timeLabel": "Timp",
+        "undoBtn": "Undo",
+        "finishBtn": "Finish",
+        "insufficientFunds": "Fonduri insuficiente",
+        "hintBudget": "Cheltuiește tot bugetul și atinge 50% în toate categoriile",
+        "hintCategories": "Atinge minim 50% în toate categoriile pentru a finaliza"
+      },
+      "phoneCall": {
+        "title": "TELEFON!",
+        "message1": "A sunat şeful de partid! Trebuie să răspunzi?",
+        "message2": "Şeful de partid sună din nou! De data asta pare urgent...",
+        "answerBtn": "Răspund",
+        "ignoreBtn": "Nu răspund",
+        "countdown": "secunde până răspunzi"
+      },
+      "result": {
+        "winTitle": "FELICITĂRI!",
+        "winMessage": "Așa e să fii primar: fiecare alegere contează. Mulțumim că ai privit viitorul educației în ochi alături de noi.",
+        "loseTitle": "TIME'S OVER!",
+        "loseMessage": "Felicitări pentru încercare! Ai simțit presiunea timpului și a bugetului exact ca un primar.",
+        "retryBtn": "Mai încearcă o dată",
+        "timeLabel": "Timp",
+        "scoreLabel": "Scor",
+        "progressLabel": "Progres",
+        "categoriesTitle": "Rezultate categorii:"
+      }
+    },
+    "en": {
+      "start": {
+        "title": "Simulation",
+        "subtitle": "Leader of the Year 2025",
+        "description": "Experience the challenges of a leader",
+        "nameLabel": "Full Name",
+        "namePlaceholder": "e.g.: Maria Popescu",
+        "domainLabel": "Domain",
+        "domainPlaceholder": "Select domain",
+        "instructionsBtn": "Instructions",
+        "startBtn": "Start game",
+        "tagline": "Looking the future of education in the eye"
+      }
+    }
+  },
+  "brandAssets": {
+    "logo": {
+      "gradientOnDark": "/assets/logo/ave_logo_color_gradient.svg",
+      "white": "/assets/logo/ave_logo_white.svg",
+      "dark": "/assets/logo/ave_logo_dark.svg",
+      "minSize": {
+        "width": 100,
+        "height": 54
+      },
+      "clearspace": 20
+    },
+    "eyeGraphic": "/assets/graphic/eye_2025.svg",
+    "fonts": {
+      "primary": "Poppins",
+      "weights": ["300", "400", "500", "600", "700"]
+    }
+  }
+}

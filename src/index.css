@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Brand colors (from spec) */
+  --brand-dark: #0e0513;
+  --brand-primary-a: #ffffff;
+  --brand-primary-b: #b5f351ff;
+
+  /* Status colors (from spec) */
+  --status-red: #E53935;
+  --status-orange: #FB8C00;
+  --status-green: #43A047;
+
+  /* Typography tokens (landscape 1920×1080 baseline) */
+  --font-h1: 64px/1.1 Poppins;
+  --font-h2: 42px/1.15 Poppins;
+  --font-h3: 32px/1.2 Poppins;
+  --font-body-lg: 28px/1.35 Poppins;
+  --font-body: 24px/1.4 Poppins;
+  --font-ui: 20px/1.4 Poppins;
+  --font-small: 18px/1.4 Poppins;
+
+  /* Logo constraints (from spec) */
+  --logo-clearspace-digital: 20px;
+  --logo-minsize-width: 100px;
+  --logo-minsize-height: 54px;
+
+  /* Legacy/derived colors */
+  --background-primary: #0e0513;
+  --background-secondary: rgba(14, 5, 19, 0.8);
+  --primary-a: #ffffff;
+  --primary-b: #b5f351ff;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-primary);
+  background: #0e0513;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, button {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Responsive full-screen layout (Landscape optimized) */
+#root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #0e0513;
+  overflow: hidden;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(30, 41, 59, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.7);
+}
+
+/* Utility classes */
+.gradient-text {
+  background: linear-gradient(to right, #b5f351ff, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg {
+  background: #b5f351ff;
+}
+
+.shadow-glow {
+  box-shadow: 0 0 20px rgba(81, 189, 243, 0.4);
+}
+
+/* Touch-friendly */
+button, .clickable {
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
+}
